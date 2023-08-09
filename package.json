@@ -1,0 +1,52 @@
+{
+	"name": "moniter",
+	"version": "1.0.0",
+	"main": "dist/cjs/index.js",
+	"module": "dist/es/index.js",
+	"browser": "dist/umd/index.js",
+	"types": "./types/index.ts",
+	"type": "module",
+	"devDependencies": {
+		"@rollup/plugin-alias": "^5.0.0",
+		"@rollup/plugin-commonjs": "^25.0.3",
+		"@rollup/plugin-eslint": "^9.0.4",
+		"@rollup/plugin-json": "^6.0.0",
+		"@rollup/plugin-node-resolve": "^15.1.0",
+		"@rollup/plugin-terser": "^0.4.3",
+		"@rollup/plugin-typescript": "^11.1.2",
+		"@types/node": "^20.4.2",
+		"@types/ua-parser-js": "^0.7.36",
+		"@typescript-eslint/eslint-plugin": "^6.3.0",
+		"@typescript-eslint/parser": "^6.3.0",
+		"eslint": "^8.46.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.3",
+		"only-allow": "^1.1.1",
+		"prettier": "^3.0.1",
+		"rimraf": "^5.0.1",
+		"rollup": "^3.26.3",
+		"rollup-plugin-prettier": "^3.0.0",
+		"tslib": "^2.6.0",
+		"typescript": "^5.1.6"
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"preinstall": "npx only-allow pnpm",
+		"build": "pnpm run clear && rollup --config rollup.config.ts --configPlugin typescript --environment NODE_ENV:production",
+		"dev": "rollup -c -w",
+		"clear": "rimraf dist/*"
+	},
+	"files": [
+		"dist",
+		"types"
+	],
+	"dependencies": {
+		"ua-parser-js": "^1.0.35"
+	},
+	"lint-staged": {
+		"*.{ts,js}": [
+			"prettier --write",
+			"eslint --fix --ext .ts"
+		]
+	}
+}

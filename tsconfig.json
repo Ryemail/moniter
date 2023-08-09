@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"rootDir": ".",
+		"baseUrl": ".",
+		"newLine": "LF",
+		"target": "ES5",
+		"module": "ESNext",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "Node",
+		"declaration": false,
+		"skipLibCheck": true,
+		"removeComments": false,
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
+	"include": ["./src/*", "rollup.config.ts", "types"],
+	"exclude": ["dist"]
+}
